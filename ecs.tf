@@ -14,6 +14,8 @@ resource "aws_ecs_task_definition" "sample_app_nginx" {
 }
 
 resource "aws_ecs_service" "sample_service" {
+  platform_version = "1.4.0"
+  enable_execute_command = true
   cluster                            = "${aws_ecs_cluster.sample_cluster.id}"
   launch_type                        = "FARGATE"
   deployment_minimum_healthy_percent = 100
